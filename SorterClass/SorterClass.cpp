@@ -26,8 +26,8 @@ using namespace std;
 
 //Для работы с файлами использовать библиотеку fstream и механизм потоков C++.
 
-#define LITTLE_MATRIX
-//#define LARGE_MATRIX
+//#define LITTLE_MATRIX
+#define LARGE_MATRIX
 
 int main()
 {
@@ -55,11 +55,22 @@ mat.arrToFile(next);	//записываем массив в тот же новы
 #endif // LITTLE_MATRIX
 
 #ifdef LARGE_MATRIX
-matrixSorter big(1500);
+matrixSorter big(15);
 big.fillArr();
 big.display();
 char Big[] = "Big.txt";
+try
+{
 big.arrToFile(Big);
+}
+catch (exception& ex)
+{
+	cout << " Мы поймали исключение 1 " << ex.what() << endl;
+}
+catch (const char* ex)
+{
+	cout << " Мы поймали исключение 2 " << ex << endl;
+}
 matrixSorter big_in(1500);
 big_in.fileToArr(Big);
 big.sortArr();

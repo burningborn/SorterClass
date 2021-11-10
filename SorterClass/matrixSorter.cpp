@@ -77,8 +77,9 @@ void matrixSorter::arrToFile(char name[])
 {
 	ofstream out;					//создаём поток
 	out.open(name);					//открываем файл 
-	if (!out.is_open())				//проверяем что файл открыт
+	if (out.is_open())				//проверяем что файл открыт
 	{
+		throw "Ошибка открытия файла!";
 		cout << "Ошибка открытия файла!\n";
 	}
 	else
